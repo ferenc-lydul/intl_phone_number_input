@@ -125,4 +125,12 @@ class PhoneNumber extends Equatable {
 
     return type;
   }
+
+  /// Returns true if found.
+  static bool isISO2CodeExists(String? isoCode) {
+    if (isoCode != null) {
+      return Countries.countryList.firstWhereOrNull((country) => country['alpha_2_code'] == isoCode) != null;
+    }
+    return false;
+  }
 }
