@@ -62,11 +62,16 @@ class SelectorButton extends StatelessWidget {
                 trailingSpace: selectorConfig.trailingSpace,
                 textStyle: selectorTextStyle,
               )
-        : MaterialButton(
+        : RawMaterialButton(
             key: Key(TestHelper.DropdownButtonKeyValue),
-            padding: EdgeInsets.zero,
+            elevation: 0.0,
+            hoverElevation: 0.0,
+            focusElevation: 0.0,
+            highlightElevation: 0.0,
+            padding: selectorConfig.buttonPadding ?? EdgeInsets.all(8.0),
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            minWidth: 0,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+            constraints: const BoxConstraints(),
             onPressed: countries.isNotEmpty && countries.length > 1 && isEnabled
                 ? () async {
                     Country? selected;
@@ -84,16 +89,13 @@ class SelectorButton extends StatelessWidget {
                     }
                   }
                 : null,
-            child: Padding(
-              padding: selectorConfig.buttonPadding ?? EdgeInsets.all(8.0),
-              child: Item(
-                country: country,
-                showFlag: selectorConfig.showFlags,
-                useEmoji: selectorConfig.useEmoji,
-                leadingPadding: selectorConfig.leadingPadding,
-                trailingSpace: selectorConfig.trailingSpace,
-                textStyle: selectorTextStyle,
-              ),
+            child: Item(
+              country: country,
+              showFlag: selectorConfig.showFlags,
+              useEmoji: selectorConfig.useEmoji,
+              leadingPadding: selectorConfig.leadingPadding,
+              trailingSpace: selectorConfig.trailingSpace,
+              textStyle: selectorTextStyle,
             ),
           );
   }
