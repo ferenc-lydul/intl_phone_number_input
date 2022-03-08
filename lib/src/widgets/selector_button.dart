@@ -65,6 +65,7 @@ class SelectorButton extends StatelessWidget {
         : MaterialButton(
             key: Key(TestHelper.DropdownButtonKeyValue),
             padding: EdgeInsets.zero,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             minWidth: 0,
             onPressed: countries.isNotEmpty && countries.length > 1 && isEnabled
                 ? () async {
@@ -84,7 +85,7 @@ class SelectorButton extends StatelessWidget {
                   }
                 : null,
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: selectorConfig.buttonPadding ?? EdgeInsets.all(8.0),
               child: Item(
                 country: country,
                 showFlag: selectorConfig.showFlags,
@@ -123,6 +124,7 @@ class SelectorButton extends StatelessWidget {
       context: inheritedContext,
       barrierDismissible: true,
       builder: (BuildContext context) => AlertDialog(
+        contentPadding: selectorConfig.dialogPadding ?? const EdgeInsets.all(16.0),
         content: Directionality(
           textDirection: Directionality.of(inheritedContext),
           child: Container(
