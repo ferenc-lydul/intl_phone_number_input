@@ -59,7 +59,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 16.0),
           child: TextFormField(
             key: Key(TestHelper.CountrySearchInputKeyValue),
             decoration: getSearchBoxDecoration(),
@@ -92,9 +92,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
               );
             },
             separatorBuilder: (BuildContext context, int index) {
-              if (index == 0) return SizedBox.shrink();
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 1.0,
                   color: Colors.grey.shade200,
@@ -147,25 +146,28 @@ class DirectionalCountryListTile extends StatelessWidget {
       child: Row(
         children: <Widget>[
           if (showFlags) _Flag(country: country, useEmoji: useEmoji),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                '${Utils.getCountryName(country, locale)}',
-                style: TextStyle(
-                  color: Colors.grey.shade900,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w500,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  '${Utils.getCountryName(country, locale)}',
+                  style: TextStyle(
+                    color: Colors.grey.shade900,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              Text(
-                '${country.dialCode ?? ''}',
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 14.0,
-                ),
-              ),
-            ],
+                if (country.dialCode?.isNotEmpty == true)
+                  Text(
+                    country.dialCode!,
+                    style: TextStyle(
+                      color: Colors.grey.shade500,
+                      fontSize: 14.0,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
