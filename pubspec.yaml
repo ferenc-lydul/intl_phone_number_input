@@ -12,12 +12,12 @@ dependencies:
 
   libphonenumber_plugin: ^0.2.3
   equatable: ^2.0.3
-  collection: ^1.15.0
+  collection: ^1.16.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  test: ^1.16.5
+  test:
 
 
 # For information on the generic Dart part of this file, see the
