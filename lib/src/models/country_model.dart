@@ -53,7 +53,7 @@ class Country {
   }
 
   @override
-  int get hashCode => hashValues(alpha2Code, alpha3Code, dialCode);
+  int get hashCode => alpha2Code.hashCode ^ alpha3Code.hashCode ^ dialCode.hashCode;
 
   @override
   String toString() => '[Country] { '
