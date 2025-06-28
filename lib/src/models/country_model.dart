@@ -1,5 +1,3 @@
-import 'package:flutter/rendering.dart';
-
 /// A [Country] model represents an instance of a country which contains
 /// information about the country
 class Country {
@@ -53,7 +51,7 @@ class Country {
   }
 
   @override
-  int get hashCode => alpha2Code.hashCode ^ alpha3Code.hashCode ^ dialCode.hashCode;
+  int get hashCode => Object.hashAll([alpha2Code, alpha3Code, dialCode]);
 
   @override
   String toString() => '[Country] { '

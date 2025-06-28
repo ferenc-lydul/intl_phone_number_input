@@ -75,13 +75,10 @@ class SelectorButton extends StatelessWidget {
             onPressed: countries.isNotEmpty && countries.length > 1 && isEnabled
                 ? () async {
                     Country? selected;
-                    if (selectorConfig.selectorType ==
-                        PhoneInputSelectorType.BOTTOM_SHEET) {
-                      selected = await showCountrySelectorBottomSheet(
-                          context, countries);
+                    if (selectorConfig.selectorType == PhoneInputSelectorType.BOTTOM_SHEET) {
+                      selected = await showCountrySelectorBottomSheet(context, countries);
                     } else {
-                      selected =
-                          await showCountrySelectorDialog(context, countries);
+                      selected = await showCountrySelectorDialog(context, countries);
                     }
 
                     if (selected != null) {
@@ -101,8 +98,7 @@ class SelectorButton extends StatelessWidget {
   }
 
   /// Converts the list [countries] to `DropdownMenuItem`
-  List<DropdownMenuItem<Country>> mapCountryToDropdownItem(
-      List<Country> countries) {
+  List<DropdownMenuItem<Country>> mapCountryToDropdownItem(List<Country> countries) {
     return countries.map((country) {
       return DropdownMenuItem<Country>(
         value: country,
@@ -120,8 +116,7 @@ class SelectorButton extends StatelessWidget {
   }
 
   /// shows a Dialog with list [countries] if the [PhoneInputSelectorType.DIALOG] is selected
-  Future<Country?> showCountrySelectorDialog(
-      BuildContext inheritedContext, List<Country> countries) {
+  Future<Country?> showCountrySelectorDialog(BuildContext inheritedContext, List<Country> countries) {
     return showDialog(
       context: inheritedContext,
       barrierDismissible: true,
@@ -146,24 +141,20 @@ class SelectorButton extends StatelessWidget {
   }
 
   /// shows a Dialog with list [countries] if the [PhoneInputSelectorType.BOTTOM_SHEET] is selected
-  Future<Country?> showCountrySelectorBottomSheet(
-      BuildContext inheritedContext, List<Country> countries) {
+  Future<Country?> showCountrySelectorBottomSheet(BuildContext inheritedContext, List<Country> countries) {
     return showModalBottomSheet(
       context: inheritedContext,
       clipBehavior: Clip.hardEdge,
       isScrollControlled: isScrollControlled,
       backgroundColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12), topRight: Radius.circular(12))),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12))),
       builder: (BuildContext context) {
         return Stack(children: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
           ),
           Padding(
-            padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: DraggableScrollableSheet(
               builder: (BuildContext context, ScrollController controller) {
                 return Directionality(

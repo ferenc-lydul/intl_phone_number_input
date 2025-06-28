@@ -176,9 +176,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
   /// [initialiseWidget] sets initial values of the widget
   void initialiseWidget() async {
     if (widget.initialValue != null) {
-      if (widget.initialValue!.phoneNumber != null &&
-          widget.initialValue!.phoneNumber!.isNotEmpty &&
-          (await PhoneNumberUtil.isValidNumber(phoneNumber: widget.initialValue!.phoneNumber!, isoCode: widget.initialValue!.isoCode!))!) {
+      if (widget.initialValue!.phoneNumber != null && widget.initialValue!.phoneNumber!.isNotEmpty && (await PhoneNumberUtil.isValidNumber(phoneNumber: widget.initialValue!.phoneNumber!, isoCode: widget.initialValue!.isoCode!))!) {
         String phoneNumber = await PhoneNumber.getParsableNumber(widget.initialValue!);
 
         controller!.text = widget.formatInput ? phoneNumber : phoneNumber.replaceAll(RegExp(r'[^\d+]'), '');
@@ -273,18 +271,19 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
 
     if (widget.selectorConfig.setSelectorButtonAsPrefixIcon) {
       return value.copyWith(
-          prefixIcon: SelectorButton(
-        country: country,
-        countries: countries,
-        onCountryChanged: onCountryChanged,
-        selectorConfig: widget.selectorConfig,
-        selectorTextStyle: widget.selectorTextStyle,
-        searchBoxDecoration: widget.searchBoxDecoration,
-        locale: locale,
-        isEnabled: widget.isEnabled,
-        autoFocusSearchField: widget.autoFocusSearch,
-        isScrollControlled: widget.countrySelectorScrollControlled,
-      ));
+        prefixIcon: SelectorButton(
+          country: country,
+          countries: countries,
+          onCountryChanged: onCountryChanged,
+          selectorConfig: widget.selectorConfig,
+          selectorTextStyle: widget.selectorTextStyle,
+          searchBoxDecoration: widget.searchBoxDecoration,
+          locale: locale,
+          isEnabled: widget.isEnabled,
+          autoFocusSearchField: widget.autoFocusSearch,
+          isScrollControlled: widget.countrySelectorScrollControlled,
+        ),
+      );
     }
 
     return value;

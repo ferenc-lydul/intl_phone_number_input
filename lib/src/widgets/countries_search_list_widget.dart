@@ -24,7 +24,8 @@ class CountrySearchListWidget extends StatefulWidget {
   });
 
   @override
-  _CountrySearchListWidgetState createState() => _CountrySearchListWidgetState();
+  _CountrySearchListWidgetState createState() =>
+      _CountrySearchListWidgetState();
 }
 
 class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
@@ -50,7 +51,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
 
   /// Returns [InputDecoration] of the search box
   InputDecoration getSearchBoxDecoration() {
-    return widget.searchBoxDecoration ?? InputDecoration(labelText: 'Search by country name or dial code');
+    return widget.searchBoxDecoration ??
+        InputDecoration(labelText: 'Search by country name or dial code');
   }
 
   @override
