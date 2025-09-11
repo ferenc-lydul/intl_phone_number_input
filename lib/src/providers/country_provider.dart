@@ -1,7 +1,7 @@
 import 'package:intl_phone_number_input/src/models/country_list.dart';
 import 'package:intl_phone_number_input/src/models/country_model.dart';
 
-const String PropertyName = 'alpha_2_code';
+const String _propertyName = 'alpha_2_code';
 
 /// [CountryProvider] provides helper classes that involves manipulations.
 /// of Countries from [Countries.countryList]
@@ -20,7 +20,7 @@ class CountryProvider {
       return jsonList.map((country) => Country.fromJson(country)).toList();
     }
     List filteredList = jsonList.where((country) {
-      return countries.contains(country[PropertyName]);
+      return countries.contains(country[_propertyName]);
     }).toList();
 
     return filteredList.map((country) => Country.fromJson(country)).toList();
